@@ -385,13 +385,13 @@ try {
                         ]) {
                     node("build-tiflash-release") {
                         def ws = pwd()
-                        deleteDir()
+                        // deleteDir()
                         container("builder") {
                             // println "debug command:\nkubectl -n jenkins-ci exec -ti ${NODE_NAME} bash"
                             dir("tics") {
-//                                if (sh(returnStatus: true, script: '[ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1') != 0) {
-//                                    deleteDir()
-//                                }
+                                if (sh(returnStatus: true, script: '[ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1') != 0) {
+                                    deleteDir()
+                                }
                                 def target = "tiflash"
                                 def filepath = "builds/pingcap/tiflash/optimization/${RELEASE_TAG}/${TIFLASH_HASH}/centos7/tiflash.tar.gz"
                                 def filepath2 = "builds/pingcap/tiflash/optimization/${TIFLASH_HASH}/centos7/tiflash.tar.gz"
