@@ -371,8 +371,7 @@ try {
         if (SKIP_TIFLASH == "false" && BUILD_TIKV_IMPORTER == "false") {
             builds["Build tiflash release"] = {
                 podTemplate(name: "build-tiflash-release", label: "build-tiflash-release",
-                        nodeSelector: 'role_type=slave',
-                        instanceCap: 5, idleMinutes: 10,
+                        nodeSelector: 'role_type=slave', instanceCap: 5,
                         workspaceVolume: emptyDirWorkspaceVolume(memory: true),
                         containers: [
                                 containerTemplate(name: 'dockerd', image: 'docker:18.09.6-dind', privileged: true),
