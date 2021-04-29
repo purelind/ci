@@ -23,7 +23,7 @@ try {
 
     // stage prepare
     // stage build
-    stage("Valid HASH") {
+    stage("Validating HASH") {
         node("build_go1130") {
             container("golang") {
                 def ws = pwd()
