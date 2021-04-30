@@ -140,7 +140,7 @@ try {
             }
         }
     }
-    stages("Build") {
+    stage("Build") {
         builds = [:]
 
         if (BUILD_TIKV_IMPORTER == "false") {
