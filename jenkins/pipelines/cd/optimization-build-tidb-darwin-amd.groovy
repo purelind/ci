@@ -242,8 +242,8 @@ try {
         }
         builds["Build tikv"] = {
             stage("Build tikv") {
-                def workspace = WORKSPACE
                 node("mac") {
+                    def workspace = WORKSPACE
                     dir("${workspace}/go/src/github.com/pingcap/tikv") {
                         def target = "tikv-${RELEASE_TAG}-${os}-${arch}"
                         def filepath = "builds/pingcap/tikv/optimization/${TIKV_HASH}/darwin/tikv-server.tar.gz"
@@ -303,8 +303,8 @@ try {
         }
         builds["Build importer"] = {
             stage("Build importer") {
-                def workspace = WORKSPACE
                 node("mac") {
+                    def workspace = WORKSPACE
                     dir("${workspace}/go/src/github.com/pingcap/importer") {
                         def target = "importer-${RELEASE_TAG}-${os}-${arch}"
                         def filepath = "builds/pingcap/importer/optimization/${IMPORTER_HASH}/darwin/importer.tar.gz"
