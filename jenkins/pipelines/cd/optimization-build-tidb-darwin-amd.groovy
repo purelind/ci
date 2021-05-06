@@ -172,7 +172,7 @@ try {
         if (SKIP_TIFLASH == "false" && BUILD_TIKV_IMPORTER == "false") {
             builds["Build tiflash"] = {
                 stage("Build tiflash") {
-                    node("mac") {
+                    node("mac-i7") {
                         dir("tics") {
                             def target = "tiflash-${RELEASE_TAG}-${os}-${arch}"
                             def filepath = "builds/pingcap/tiflash/optimization/${RELEASE_TAG}/${TIFLASH_HASH}/darwin/tiflash.tar.gz"
@@ -242,7 +242,7 @@ try {
         }
         builds["Build tikv"] = {
             stage("Build tikv") {
-                node("mac") {
+                node("mac-i7") {
                     def workspace = WORKSPACE
                     dir("${workspace}/go/src/github.com/pingcap/tikv") {
                         def target = "tikv-${RELEASE_TAG}-${os}-${arch}"
@@ -303,7 +303,7 @@ try {
         }
         builds["Build importer"] = {
             stage("Build importer") {
-                node("mac") {
+                node("mac-i7") {
                     def workspace = WORKSPACE
                     dir("${workspace}/go/src/github.com/pingcap/importer") {
                         def target = "importer-${RELEASE_TAG}-${os}-${arch}"
