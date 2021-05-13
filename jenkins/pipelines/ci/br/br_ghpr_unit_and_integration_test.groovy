@@ -454,7 +454,7 @@ catchError {
 
     stage('Coverage') {
         // Skip upload coverage when the job is initialed by TiDB PRs.
-        node("${GO_TEST_SLAVE}") {
+        node("debug_gobin_test_go1130_memvolume") {
             container("golang") {
                 println "debug command:\nkubectl -n jenkins-ci exec -ti ${NODE_NAME} bash"
                 if (params.containsKey("triggered_by_upstream_pr_ci")) {
