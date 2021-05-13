@@ -454,7 +454,7 @@ catchError {
 
     stage('Coverage') {
         // Skip upload coverage when the job is initialed by TiDB PRs.
-        node("debug_gobin_test_go1130_memvolume") {
+        node("${GO_TEST_SLAVE}") {
             container("golang") {
                 println "debug command:\nkubectl -n jenkins-ci exec -ti ${NODE_NAME} bash"
                 if (params.containsKey("triggered_by_upstream_pr_ci")) {
@@ -480,8 +480,7 @@ catchError {
                                 timeout(60) {
                                     sh label: "Calculate coverage", script: """
                                     ls cover
-                                    GO111MODULE=off GOPATH=/home/jenkins/go go get github.com/wadey/gocovmerge
-                                    which gocovmerge
+                                    GO111MODULE=off go get github.com/wadey/gocovmerge
                                     gocovmerge cover/cov.* > coverage.txt
 
                                     echo ${CODECOV_TOKEN} > CODECOV_TOKEN
