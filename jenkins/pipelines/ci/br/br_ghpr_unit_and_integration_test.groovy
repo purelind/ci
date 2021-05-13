@@ -480,7 +480,8 @@ catchError {
                                 timeout(60) {
                                     sh label: "Calculate coverage", script: """
                                     ls cover
-                                    GO111MODULE=off go get github.com/wadey/gocovmerge
+                                    GO111MODULE=off GOPATH=/home/jenkins/go go get github.com/wadey/gocovmerge
+                                    which gocovmerge
                                     gocovmerge cover/cov.* > coverage.txt
 
                                     echo ${CODECOV_TOKEN} > CODECOV_TOKEN
