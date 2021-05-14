@@ -26,7 +26,7 @@ node("${GO_TEST_SLAVE}") {
     catchError {
         node("build_go1130_binlog") {
             deleteDir()
-            def ws = pwd()
+            def curws = pwd()
             container("golang") {
                 dir("/home/jenkins/agent/git/tidb-binlog") {
                     if (sh(returnStatus: true, script: '[ -d .git ] && [ -f Makefile ] && git rev-parse --git-dir > /dev/null 2>&1') != 0) {
@@ -51,7 +51,7 @@ node("${GO_TEST_SLAVE}") {
                         sh """
                             cp -R /home/jenkins/agent/git/tidb-binlog/. ./
                             git checkout -f ${ghprbActualCommit}
-                            GOPATH=\$GOPATH:${ws}/go make check
+                            GOPATH=\$GOPATH:${curws}/go make check
                         """
                     }
                 }
