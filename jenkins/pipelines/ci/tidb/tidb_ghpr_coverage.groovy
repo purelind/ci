@@ -15,8 +15,7 @@ if (notRun == 0){
 }
 def slackcolor = 'good'
 def githash
-env.TRAVIS_COVERAGE = 1
-env.CODECOV_TOKEN = '2114fff2-bd95-43eb-9483-a351f0184eae'
+
 
 try {
 
@@ -96,7 +95,7 @@ try {
                         timeout(30) {
                             sh """
                             set +x
-                            export CODECOV_TOKEN='2114fff2-bd95-43eb-9483-a351f0184eae'
+                            export CODECOV_TOKEN=${TIDB_CODECOV_TOKEN}
                             export TRAVIS_COVERAGE=1
                             set -x
                             # we will change TiDB Makefile directly after the actual effect is stable
