@@ -71,7 +71,7 @@ catchError {
                 stash includes: "go/src/github.com/pingcap/ticdc/**", name: "ticdc", useDefaultExcludes: false
             }
 
-            def script_path = "${ws}/go/src/github.com/pingcap/ci/jenkins/pipelines/ci/ticdc/integration_test_common.groovy"
+            def script_path = "go/src/github.com/pingcap/ci/jenkins/pipelines/ci/ticdc/integration_test_common.groovy"
             def common = load script_path
 
             // HACK! Download jks by injecting RACK_COMMAND
